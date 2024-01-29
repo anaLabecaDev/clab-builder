@@ -1,10 +1,13 @@
-import Image from 'next/image';
 import { Shiba } from './components/shiba';
+import SiteNavbar from './components/navbar';
 
 export default function Home() {
   return (
-    <main className='flex min-h-screen flex-col items-center justify-between p-24'>
-      <Shiba />
-    </main>
+    <>
+      <SiteNavbar />
+      <main className='flex min-h-screen flex-col items-center justify-between'>
+        <Shiba />
+      </main>
+    </>
   );
 }
