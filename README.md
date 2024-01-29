@@ -1,5 +1,7 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+Project inspired by Valentina Garavaglia's ["Rendering a 3D model with Next.js 13, TypeScript, React-three-fiber, and React-three-drei"](https://medium.com/@valentinagaravaglia/rendering-a-3d-model-with-next-js-13-typescript-react-three-fiber-and-react-three-drei-84476c3b6a5d) article.
+
 ## Getting Started
 
 First, run the development server:
@@ -20,14 +22,11 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Project Stack
+- [Next.js](https://nextjs.org/docs)
+- [Typescript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [React Three Fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction) 
 
 ## Deploy on Vercel
 
