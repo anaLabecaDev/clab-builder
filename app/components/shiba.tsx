@@ -4,10 +4,11 @@ import { useRef } from 'react';
 import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import { Mesh } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { OrbitControls } from '@react-three/drei';
 
 function MeshComponent() {
-  const meshRef = useRef<Mesh>(null!);
   const fileUrl = '/shiba/scene.gltf';
+  const meshRef = useRef<Mesh>(null!);
   const gltf = useLoader(GLTFLoader, fileUrl);
 
   useFrame(() => {
@@ -23,8 +24,11 @@ function MeshComponent() {
 
 export function Shiba() {
   return (
-    <div className='flex justify-center items-center h-screen'>
-      <Canvas>
+    <div className='flex justify-center items-center h-screen w-full'>
+      <Canvas className='h-2xl w-2xl'>
+        <OrbitControls />
+        <ambientLight />
+        <pointLight position={[10, 10, 10]} />
         <MeshComponent />
       </Canvas>
     </div>
