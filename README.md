@@ -1,6 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-Project inspired by Valentina Garavaglia's ["Rendering a 3D model with Next.js 13, TypeScript, React-three-fiber, and React-three-drei"](https://medium.com/@valentinagaravaglia/rendering-a-3d-model-with-next-js-13-typescript-react-three-fiber-and-react-three-drei-84476c3b6a5d) article.
+CLAB, it's a NextJs e-commerce management and creation tool. 
 
 ## Getting Started
 
