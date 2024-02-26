@@ -15,19 +15,24 @@ const SiteNavbar = () => {
       </NavbarBrand>
       <NavbarContent>
         <NavbarItem>
-          <Link color='foreground' href='#'>
+          <Link color='foreground' href='/'>
             Home
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color='foreground' href='#'>
+          <Link color='foreground' href='/dashboard'>
             Dashboard
           </Link>
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify='end'>
         <NavbarItem>
-          <Button as={Link} color='primary' href='#' variant='flat'>
+          <Button as={Link} color='primary' href='#' variant='light'>
+            Sign In
+          </Button>
+        </NavbarItem>
+        <NavbarItem>
+          <Button as={Link} color='primary' href='#' variant='bordered'>
             Sign Up
           </Button>
         </NavbarItem>
