@@ -21,7 +21,7 @@ export default function Home() {
                   <h1 className='text-2xl text-center'>Welcome back</h1>
                   <p className='text-sm text-center mt-4 text-default-500'>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor.{' '}
+                    do eiusmod tempor.
                   </p>
                 </div>
 
