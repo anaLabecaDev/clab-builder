@@ -1,3 +1,8 @@
+import { Button } from '@nextui-org/button';
+import { Card, CardHeader, CardBody, CardFooter } from '@nextui-org/card';
+import { Input } from '@nextui-org/react';
+import { Checkbox } from '@nextui-org/checkbox';
+
 export default function Home() {
   return (
     <main className='flex min-h-screen flex-col'>
@@ -5,17 +10,48 @@ export default function Home() {
         <p className='text-slate-50 p-6'>Home</p>
       </header>
 
-      <form className='mx-auto border border-slate-300 rounded-md'>
-        <div className='mb-6'>
-          <label htmlFor='email' className="block mb-2 text-sm font-medium text-gray-900" >Email:</label>
-          <input type='email' id='email' name='email' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
-        </div>
-        <div className='mb-6'>
-          <label htmlFor='password' className="block mb-2 text-sm font-medium text-gray-900">Password:</label>
-          <input type='password' id='password' name='password' className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
-        </div>
-        <button type='submit' className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
-      </form>
+      <div className='grow flex items-center justify-center'>
+        <Card className='max-w-[870px] flex-1'>
+          <CardBody className='p-0'>
+            <div className='grid grid-cols-12 gap-4'>
+              <div className='relative col-span-6 bg-green-200'></div>
+
+              <div className='p-6 col-span-6 flex flex-col justify-center'>
+                <div className='my-8 mx-4'>
+                  <h1 className='text-2xl text-center'>Welcome back</h1>
+                  <p className='text-sm text-center mt-4 text-default-500'>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor.{' '}
+                  </p>
+                </div>
+
+                <form className='flex flex-col gap-4'>
+                  <Input
+                    type='email'
+                    label='Email'
+                    placeholder='you@example.com'
+                    labelPlacement='outside'
+                  />
+                  <Input
+                    type='password'
+                    label='Password'
+                    placeholder='Enter your password'
+                    labelPlacement='outside'
+                  />
+
+                  <Checkbox defaultSelected size='sm'>
+                    Remember me
+                  </Checkbox>
+
+                  <Button color='primary' type='submit'>
+                    Sign In
+                  </Button>
+                </form>
+              </div>
+            </div>
+          </CardBody>
+        </Card>
+      </div>
     </main>
   );
 }
