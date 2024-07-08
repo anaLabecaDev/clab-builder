@@ -4,51 +4,57 @@ import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
 import { createClient } from '@/lib/supabase/server'
+import {userAuthSchema, type UserAuthSchemaType} from '@/schemas/user-auth'
 
 
-export async function login(formData: FormData) {
-  const supabase = createClient()
+export async function login(data: UserAuthSchemaType) {
+  const supabase = createClient();
 
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
-  const data = {
-    email: formData.get('email') as string,
-    password: formData.get('password') as string,
+  const result = userAuthSchema.safeParse(data);
+
+  if (!result.success) {
+    const errorMessages = result.error.issues.reduce((prev, issue) => {
+      return (prev += issue.message);
+    }, '');
+    return {
+      error: errorMessages,
+    };
   }
 
-  const { error } = await supabase.auth.signInWithPassword(data)
-
-  if (error) {
-    redirect('/error')
+  try {
+    await supabase.auth.signInWithPassword(data)
+  } catch (error) {
+    return {
+      error: 'SERVER ERROR',
+    };
   }
 
   revalidatePath('/', 'layout')
   redirect('/dashboard')
 }
 
-export async function signup(formData: FormData) {
+export async function signUp(data: UserAuthSchemaType) {
   const supabase = createClient()
 
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
-  const data = {
-    email: formData.get('email') as string,
-    password: formData.get('password') as string,
+  const result = userAuthSchema.safeParse(data);
+
+  if (!result.success) {
+    const errorMessages = result.error.issues.reduce((prev, issue) => {
+      return (prev += issue.message);
+    }, '');
+    return {
+      error: errorMessages,
+    };
   }
 
-
-  console.log(data);
-  
-
-  if (!data) return "Please enter a valid data";
-
-  const { error } = await supabase.auth.signUp(data)
-
-  if (error) {
-    console.log(error);
-    // redirect('/error')
+  try {
+    await supabase.auth.signUp(data)
+  } catch (error) {
+    return {
+      error: 'SERVER ERROR',
+    };
   }
 
-  // revalidatePath('/', 'layout')
-  // redirect('/dashboard')
+  revalidatePath('/', 'layout')
+  redirect('/')
 }

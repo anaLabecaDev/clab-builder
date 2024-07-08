@@ -4,6 +4,7 @@ import { Button, Input } from '@nextui-org/react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { userAuthSchema, UserAuthSchemaType } from '@/schemas/user-auth';
+import { login, signUp } from '../actions';
 
 export default function LoginForm() {
   const {
@@ -11,15 +12,31 @@ export default function LoginForm() {
     handleSubmit,
     reset,
     formState: { errors, isLoading, isValid },
-  } = useForm<UserAuthSchemaType>({ mode: 'onChange', resolver: zodResolver(userAuthSchema) });
+  } = useForm<UserAuthSchemaType>({
+    mode: 'onChange',
+    resolver: zodResolver(userAuthSchema),
+  });
 
-  const onSubmit = handleSubmit((data) => {
+  const onSignUpSubmit = handleSubmit(async (data) => {
+    const response = await signUp(data);
+
+    if (response?.error) {
+      alert(response.error);
+      console.error(response.error);
+    }
+  });
+
+  const onLoginSubmit = handleSubmit(async (data) => {
+    const response = await login(data);
     console.log('data', data);
-    reset();
+    if (response?.error) {
+      alert(response.error);
+      console.error(response.error);
+    }
   });
 
   return (
-    <form onSubmit={onSubmit} className='flex flex-col gap-4'>
+    <form className='flex flex-col gap-4'>
       <Input
         {...register('email')}
         type='email'
@@ -41,8 +58,18 @@ export default function LoginForm() {
         errorMessage={errors.password?.message}
       />
 
-      <Button type='submit' isDisabled={!isValid} isLoading={isLoading}>
-        {isLoading ? 'Submitting...' : 'Submit'}
+      <Button
+        color='primary'
+        type='submit'
+        onClick={onLoginSubmit}
+        isDisabled={!isValid}
+        isLoading={isLoading}
+      >
+        {isLoading ? 'Log in...' : 'Log in'}
+      </Button>
+
+      <Button type='submit' onClick={onSignUpSubmit} isDisabled={!isValid} isLoading={isLoading}>
+        {isLoading ? 'Sign up...' : 'Sign up'}
       </Button>
     </form>
   );
