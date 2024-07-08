@@ -2,6 +2,7 @@
 
 import { type ReactNode } from 'react';
 import { NextUIProvider } from '@nextui-org/react';
+import { useRouter } from 'next/navigation';
 
 export function Providers({
   children,
@@ -10,8 +11,10 @@ export function Providers({
   children: ReactNode;
   className?: string;
 }) {
+  const router = useRouter();
+
   return (
-    <NextUIProvider className={className}>
+    <NextUIProvider className={className} navigate={router.push}>
       {children}
     </NextUIProvider>
   );
