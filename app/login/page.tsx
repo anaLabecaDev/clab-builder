@@ -1,8 +1,5 @@
-import { Button } from '@nextui-org/button';
 import { Card, CardBody } from '@nextui-org/card';
-import { Input } from '@nextui-org/react';
-import { Checkbox } from '@nextui-org/checkbox';
-import { login, signup } from './actions'
+import { login, signup } from './actions';
 
 export default function LoginPage() {
   return (
@@ -20,34 +17,13 @@ export default function LoginPage() {
                   do eiusmod tempor.
                 </p>
               </div>
-
-              <form className='flex flex-col gap-4'>
-                <Input
-                  type='email'
-                  label='Email'
-                  placeholder='you@example.com'
-                  labelPlacement='outside'
-                  required
-                />
-                <Input
-                  type='password'
-                  label='Password'
-                  placeholder='Enter your password'
-                  labelPlacement='outside'
-                  required
-                />
-
-                <Checkbox defaultSelected size='sm'>
-                  Remember me
-                </Checkbox>
-
-                <Button color='primary' formAction={login} type='submit'>
-                  Sign In
-                </Button>
-
-                <Button formAction={signup} type='submit' >
-                  Sign Up
-                </Button>
+              <form >
+                <label htmlFor='email'>Email:</label>
+                <input id='email' name='email' type='email' required />
+                <label htmlFor='password'>Password:</label>
+                <input id='password' name='password' type='password' required />
+                <button formAction={login}>Log in</button>
+                <button formAction={signup}>Sign up</button>
               </form>
             </div>
           </div>

@@ -5,6 +5,7 @@ import { redirect } from 'next/navigation'
 
 import { createClient } from '@/lib/supabase/server'
 
+
 export async function login(formData: FormData) {
   const supabase = createClient()
 
@@ -35,12 +36,19 @@ export async function signup(formData: FormData) {
     password: formData.get('password') as string,
   }
 
+
+  console.log(data);
+  
+
+  if (!data) return "Please enter a valid data";
+
   const { error } = await supabase.auth.signUp(data)
 
   if (error) {
-    redirect('/error')
+    console.log(error);
+    // redirect('/error')
   }
 
-  revalidatePath('/', 'layout')
-  redirect('/dashboard')
+  // revalidatePath('/', 'layout')
+  // redirect('/dashboard')
 }
