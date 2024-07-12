@@ -3,5 +3,5 @@ import Page from './page';
 
 it('Page: Renders home page', () => {
     render(<Page />);
-    expect(screen.getByRole("heading")).toHaveTextContent("Home");
+    expect(screen.getByRole("heading")).toHaveTextContent("Data to enrich your online business");
 })
