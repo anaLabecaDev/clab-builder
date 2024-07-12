@@ -18,7 +18,6 @@ const config: Config = {
         "clab-light": {
           extend: "light",
           colors: {
-            background: '#212833',
             focus: '#07584E',
             primary: {
               DEFAULT: '#07584E',
